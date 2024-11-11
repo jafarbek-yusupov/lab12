@@ -25,56 +25,31 @@ void pr1() {
 #include <iostream>
 #include <vector>
 #include <limits>
-
+#define pb push_back
 using namespace std;
 
-bool canParkCars(vector<int>& parkingSpots, int n) {
-    int parkedCars = 0;
-    int length = parkingSpots.size();
-
-    for (int i = 0; i < length; ++i) {
-        // Check if the current spot is empty and both neighbors (if any) are also empty
-        if (parkingSpots[i] == 0 &&
-            (i == 0 || parkingSpots[i - 1] == 0) &&
-            (i == length - 1 || parkingSpots[i + 1] == 0)) {
-
-            // Park a car in this spot
-            parkingSpots[i] = 1;
-            parkedCars++;
-
-            // Check if we've parked enough cars
-            if (parkedCars == n) {
-                return true;  // "YES"
-            }
-            }
+bool isp(vector<int>& ps, int n) {
+    int cnt = 0;
+    rp(i, 0, ps.size()){
+        if (ps[i] == 0 && (i == 0 || ps[i - 1] == 0) && (i == ps.size() - 1 || ps[i + 1] == 0)){
+            ps[i] = 1;    cnt++;
+            if (cnt == n){  return true;}
+        }
     }
-
-    // If not enough cars could be parked
-    return false;  // "NO"
+    return false;
 }
 
 int main() {
-    int n;
-    cout << "Enter the number of cars to park (n): ";
-    cin >> n;
-
-    vector<int> parkingSpots;
-    int spot;
-    cout << "Enter the parking spots (0 for empty, 1 for occupied). Enter a non-integer to stop:\n";
-
-    // Read parking spots until a non-integer input is encountered
-    while (cin >> spot) {
-        parkingSpots.push_back(spot);
-    }
-
-    // Clear cin if it went into fail state due to non-integer input
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << (canParkCars(parkingSpots, n) ? "YES" : "NO") << endl;
+    int n;  cin >> n;
+    vector<int> ps;
+    int i;
+    while (cin >> i){    ps.pb(i);}
+    cout << (isp(ps, n) ? "YES" : "NO") << endl;
     return 0;
 }
-
-
+// // Clear cin if it went into fail state due to non-integer input
+// cin.clear();
+// cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 
 // int main() {
