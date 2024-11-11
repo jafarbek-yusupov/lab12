@@ -24,29 +24,41 @@ void pr1() {
 
 #include <iostream>
 #include <vector>
-#include <limits>
-#define pb push_back
 using namespace std;
 
-bool isp(vector<int>& ps, int n) {
-    int cnt = 0;
-    rp(i, 0, ps.size()){
-        if (ps[i] == 0 && (i == 0 || ps[i - 1] == 0) && (i == ps.size() - 1 || ps[i + 1] == 0)){
-            ps[i] = 1;    cnt++;
-            if (cnt == n){  return true;}
-        }
+#define rp(i, a, b) for(int i = a; i < b; i++)
+
+bool isa(const vector<vector<int>>& v, int m, int n) {
+    double c = 0;
+    rp(j, 0, n){    c += v[0][j];}
+    c /= n;
+    rp(i, 1, m){
+        double ra = 0;
+        rp(j, 0, n){    ra += v[i][j];}
+        ra /= n;
+        if(ra != c){    return false;}
     }
-    return false;
+    rp(j, 0, n){
+        double ca = 0;
+        rp(i, 0, m){    ca += v[i][j];}
+        ca /= m;
+        if(ca != c){    return false;}
+    }
+    return true;
 }
 
-int main() {
-    int n;  cin >> n;
-    vector<int> ps;
-    int i;
-    while (cin >> i){    ps.pb(i);}
-    cout << (isp(ps, n) ? "YES" : "NO") << endl;
+int main(){
+    int m, n;
+    cin >> m >> n;
+    vector<vector<int>> v(m, vector<int>(n));
+    rp(i, 0, m){    rp(j, 0, n){    cin >> v[i][j]; }   }
+    cout << (isa(v, m, n) ? "YES" : "NO") << endl;
     return 0;
 }
+
+
+
+
 // // Clear cin if it went into fail state due to non-integer input
 // cin.clear();
 // cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -72,5 +84,33 @@ int main() {
 //     }
 //     cout << rs << " " <<  cs << endl;
 //     cout << (rs == cs ? "YES" : "NO") << endl;
+//     return 0;
+// }
+
+
+// PROBLEM 5
+// #include <iostream>
+// #include <vector>
+// #include <limits>
+// #define pb push_back
+// using namespace std;
+//
+// bool isp(vector<int>& ps, int n) {
+//     int cnt = 0;
+//     rp(i, 0, ps.size()){
+//         if (ps[i] == 0 && (i == 0 || ps[i - 1] == 0) && (i == ps.size() - 1 || ps[i + 1] == 0)){
+//             ps[i] = 1;    cnt++;
+//             if (cnt == n){  return true;}
+//         }
+//     }
+//     return false;
+// }
+//
+// int main() {
+//     int n;  cin >> n;
+//     vector<int> ps;
+//     int i;
+//     while (cin >> i){    ps.pb(i);}
+//     cout << (isp(ps, n) ? "YES" : "NO") << endl;
 //     return 0;
 // }
