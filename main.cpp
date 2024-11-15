@@ -19,7 +19,19 @@ double sumMajorDiagonal(const double m[][SIZE]) {
     for (int i = 0; i < SIZE; i++){    sum += m[i][i];}
     return sum;
 }
-
+//lab pr3
+void multiplyMatrix(const double a[][N], const double b[][N], double c[][N]) {
+    // init matrix C to zero
+    for (int i = 0; i < N; i++){    for (int j = 0; j < N; j++){    c[i][j] = 0.0;}}
+    // Multiply matrices a and b, store result in c
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < N; k++) {
+                c[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+}
 
 void pr1() {
     int m, n;  cin >> m >> n;
