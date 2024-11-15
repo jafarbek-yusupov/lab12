@@ -13,6 +13,6 @@ int main(){
 	f(i, 3){    f(j,8){ if(i%2==j%2){	v[i][j]=1;}}} //black
 	fl(i,5,8){  f(j,8){ if(i%2==j%2){	v[i][j]=2;}}} //white
 	f(i, 8){    f(j,8){	cout << v[i][j] << " ";}    cout << endl;} //cout
-    
+// not fnshd, only displays a board    
     return 0;
 }
