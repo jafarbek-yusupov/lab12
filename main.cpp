@@ -59,7 +59,7 @@ int main(){
 
 
 
-// // Clear cin if it went into fail state due to non-integer input
+// TO CLEAR cin if it went into fail state due to non-integer input
 // cin.clear();
 // cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
